@@ -8,6 +8,8 @@ import { HUD } from './components/HUD';
 import { MobileDeviceFrame } from './components/MobileDeviceFrame';
 import { MemoryJournalModal } from './components/MemoryJournalModal';
 import { GitHubModal } from './components/GitHubModal';
+import { InstallModal } from './components/InstallModal';
+import { OfflineIndicator } from './components/OfflineIndicator';
 
 export default function App() {
   const engine = useMemo(() => new PhysicsEngine(), []);
@@ -22,6 +24,7 @@ export default function App() {
   });
   const [isJournalOpen, setIsJournalOpen] = useState<boolean>(false);
   const [isGitHubOpen, setIsGitHubOpen] = useState<boolean>(false);
+  const [isInstallOpen, setIsInstallOpen] = useState<boolean>(false);
   const [, setRefreshKey] = useState<number>(0);
 
   // Initialize engine settings on mount
@@ -81,6 +84,7 @@ export default function App() {
           onToggleFrame={() => setIsMobileFrame(prev => !prev)}
           onOpenJournal={() => setIsJournalOpen(true)}
           onOpenGitHub={() => setIsGitHubOpen(true)}
+          onOpenInstall={() => setIsInstallOpen(true)}
         />
 
         {/* Mo Remembers Journal Modal */}
@@ -96,6 +100,15 @@ export default function App() {
           isOpen={isGitHubOpen}
           onClose={() => setIsGitHubOpen(false)}
         />
+
+        {/* Mobile PWA Install Modal */}
+        <InstallModal
+          isOpen={isInstallOpen}
+          onClose={() => setIsInstallOpen(false)}
+        />
+
+        {/* Offline Status Toast */}
+        <OfflineIndicator />
       </div>
     </MobileDeviceFrame>
   );

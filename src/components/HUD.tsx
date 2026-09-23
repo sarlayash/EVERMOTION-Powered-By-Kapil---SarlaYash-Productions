@@ -22,6 +22,7 @@ import {
   Compass,
   Zap,
   Github,
+  Download,
 } from 'lucide-react';
 
 interface HUDProps {
@@ -34,6 +35,7 @@ interface HUDProps {
   onToggleFrame: () => void;
   onOpenJournal: () => void;
   onOpenGitHub?: () => void;
+  onOpenInstall?: () => void;
 }
 
 export const HUD: React.FC<HUDProps> = ({
@@ -46,6 +48,7 @@ export const HUD: React.FC<HUDProps> = ({
   onToggleFrame,
   onOpenJournal,
   onOpenGitHub,
+  onOpenInstall,
 }) => {
   const [isMuted, setIsMuted] = useState(soundEngine.getMuted());
   const [activeTool, setActiveTool] = useState<ActiveTool>('POINTER');
@@ -146,6 +149,18 @@ export const HUD: React.FC<HUDProps> = ({
               <BookOpen className="w-3.5 h-3.5" />
               <span className="hidden xs:inline">Memories</span>
             </button>
+
+            {onOpenInstall && (
+              <button
+                onClick={onOpenInstall}
+                title="Download / Install on Mobile Phone (PWA)"
+                className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-amber-500/20 hover:bg-amber-500/35 text-amber-300 border border-amber-400/40 text-xs font-bold transition-all shadow-sm shadow-amber-500/10"
+              >
+                <Download className="w-3.5 h-3.5 text-amber-400" />
+                <span className="hidden sm:inline">Install App</span>
+                <span className="sm:hidden">Install</span>
+              </button>
+            )}
 
             {onOpenGitHub && (
               <button
