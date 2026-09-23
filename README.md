@@ -14,8 +14,8 @@ Created by **Kapil · SarlaYash Productions**.
 
 ### 1. Clone or Download the repository
 ```bash
-git clone https://github.com/<YOUR_USERNAME>/evermotion-universe.git
-cd evermotion-universe
+git clone https://github.com/sarlayash/EVERMOTION-Powered-By-Kapil---SarlaYash-Productions.git
+cd EVERMOTION-Powered-By-Kapil---SarlaYash-Productions
 ```
 
 ### 2. Install dependencies
