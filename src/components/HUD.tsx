@@ -21,6 +21,7 @@ import {
   Rocket,
   Compass,
   Zap,
+  Github,
 } from 'lucide-react';
 
 interface HUDProps {
@@ -32,6 +33,7 @@ interface HUDProps {
   isMobileFrame: boolean;
   onToggleFrame: () => void;
   onOpenJournal: () => void;
+  onOpenGitHub?: () => void;
 }
 
 export const HUD: React.FC<HUDProps> = ({
@@ -43,6 +45,7 @@ export const HUD: React.FC<HUDProps> = ({
   isMobileFrame,
   onToggleFrame,
   onOpenJournal,
+  onOpenGitHub,
 }) => {
   const [isMuted, setIsMuted] = useState(soundEngine.getMuted());
   const [activeTool, setActiveTool] = useState<ActiveTool>('POINTER');
@@ -143,6 +146,17 @@ export const HUD: React.FC<HUDProps> = ({
               <BookOpen className="w-3.5 h-3.5" />
               <span className="hidden xs:inline">Memories</span>
             </button>
+
+            {onOpenGitHub && (
+              <button
+                onClick={onOpenGitHub}
+                title="GitHub Repository & Source Code"
+                className="flex items-center gap-1 px-2.5 py-1.5 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-200 border border-slate-700/50 text-xs font-bold transition-colors"
+              >
+                <Github className="w-3.5 h-3.5" />
+                <span className="hidden xs:inline">GitHub</span>
+              </button>
+            )}
 
             <button
               onClick={onToggleFrame}

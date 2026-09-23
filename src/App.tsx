@@ -7,6 +7,7 @@ import { GameCanvas } from './components/GameCanvas';
 import { HUD } from './components/HUD';
 import { MobileDeviceFrame } from './components/MobileDeviceFrame';
 import { MemoryJournalModal } from './components/MemoryJournalModal';
+import { GitHubModal } from './components/GitHubModal';
 
 export default function App() {
   const engine = useMemo(() => new PhysicsEngine(), []);
@@ -20,6 +21,7 @@ export default function App() {
     return false;
   });
   const [isJournalOpen, setIsJournalOpen] = useState<boolean>(false);
+  const [isGitHubOpen, setIsGitHubOpen] = useState<boolean>(false);
   const [, setRefreshKey] = useState<number>(0);
 
   // Initialize engine settings on mount
@@ -78,6 +80,7 @@ export default function App() {
           isMobileFrame={isMobileFrame}
           onToggleFrame={() => setIsMobileFrame(prev => !prev)}
           onOpenJournal={() => setIsJournalOpen(true)}
+          onOpenGitHub={() => setIsGitHubOpen(true)}
         />
 
         {/* Mo Remembers Journal Modal */}
@@ -86,6 +89,12 @@ export default function App() {
           isOpen={isJournalOpen}
           onClose={() => setIsJournalOpen(false)}
           onRefresh={() => setRefreshKey(k => k + 1)}
+        />
+
+        {/* GitHub Modal */}
+        <GitHubModal
+          isOpen={isGitHubOpen}
+          onClose={() => setIsGitHubOpen(false)}
         />
       </div>
     </MobileDeviceFrame>
