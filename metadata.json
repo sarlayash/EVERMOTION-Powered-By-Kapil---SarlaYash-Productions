@@ -1,0 +1,6 @@
+{
+  "name": "EVERMOTION - Mobile Physics Universe",
+  "description": "A living, physics-powered mobile universe that plays differently every time you touch it. 100% offline, zero ads, pure emergent play with Mo.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
